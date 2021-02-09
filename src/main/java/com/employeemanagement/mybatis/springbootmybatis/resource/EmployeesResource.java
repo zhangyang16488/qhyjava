@@ -26,14 +26,18 @@ public class EmployeesResource {
     }
 
     @GetMapping("/update")
-    private List<Employees> delete() {
+    private List<Employees> insta(@RequestBody Employees body ) {
 
         Employees employees = new Employees();
-        employees.setName("Neha");
+        System.out.println(body.getName());
 
+        employees.setName(body.getName());
+        employees.setEmail(body.getEmail());
+        employees.setPhone(body.getPhone());
         employeesMapper.insert(employees);
         return employeesMapper.findAll();
     }
+
 
     @GetMapping("/updateEmployees")
     private List<Employees> updateEmployees() {
